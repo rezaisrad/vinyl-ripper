@@ -1,0 +1,1 @@
+"""Vinyl ripper application package."""
