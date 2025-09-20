@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ripper"
+version = "0.1.0"
+description = "Vinyl ripping and audio processing tool"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "audioop-lts>=0.2.2",
+    "mutagen>=1.47.0",
+    "pydub>=0.25.1",
+    "pyloudnorm>=0.1.1",
+    "python3-discogs-client>=2.8",
+    "rich>=14.1.0",
+    "sounddevice>=0.5.2",
+    "soundfile>=0.13.1",
+    "typer>=0.19.1",
+]
+
+[project.scripts]
+ripper = "src.interface.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
