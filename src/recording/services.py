@@ -227,7 +227,8 @@ class AudioRecorder:
             """Calculate dB level from audio data."""
             # Calculate RMS
             valid_data = np.nan_to_num(audio_data, nan=0.0, posinf=0.0, neginf=0.0)
-rms = np.sqrt(np.mean(valid_data**2))
+            rms = np.sqrt(np.mean(valid_data**2))
+            if rms > 0:
             if rms > 0:
                 return 20 * np.log10(rms)
             else:
