@@ -226,7 +226,8 @@ class AudioRecorder:
         def calculate_db_level(audio_data: np.ndarray) -> float:
             """Calculate dB level from audio data."""
             # Calculate RMS
-            rms = np.sqrt(np.mean(audio_data**2))
+            valid_data = np.nan_to_num(audio_data, nan=0.0, posinf=0.0, neginf=0.0)
+            rms = np.sqrt(np.mean(valid_data.astype(np.float64) ** 2))
             if rms > 0:
                 return 20 * np.log10(rms)
             else:
@@ -294,3 +295,4 @@ class AudioRecorder:
                 device_id=config.device_id,
                 details=str(e),
             )
+            
